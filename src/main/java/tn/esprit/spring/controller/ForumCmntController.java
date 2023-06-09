@@ -26,7 +26,7 @@ public class ForumCmntController {
 
 
 
-   	@PutMapping("/editComment/{idComment}")
+   	@PutMapping("/editComment")
 	@ResponseBody
     ForumComment editComment(@RequestBody ForumComment forumComment) {
 	return forumCmntService.editComment(forumComment);
