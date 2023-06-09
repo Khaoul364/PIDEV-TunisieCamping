@@ -2,6 +2,7 @@ package tn.esprit.spring.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.repository.ActiviteRepository;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Slf4j
 public class ActiviteService implements IActiviteService{
-
+    @Autowired
     ActiviteRepository activiteRepository;
 
     @Override

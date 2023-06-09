@@ -1,5 +1,6 @@
 package tn.esprit.spring.service;
 
+import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.entity.Reservation;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface IReservationService {
 
     public Reservation addReservation(Reservation reservation);
 
-    public Reservation editReservation(Reservation reservation);
+    public void assignActiviteToReservation(Reservation reservation, int idActivite);
+
+    public Reservation editReservation(Reservation reservation, int idReservation);
 
     public void deleteReservation(int idReservation);
 

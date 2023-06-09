@@ -17,25 +17,25 @@ import java.util.Set;
 public class Activite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idActivite;
-    private String nomActivite;
-    private String description;
-    private String image;
+    int idActivite;
+    String nomActivite;
+    String description;
+    String image;
     @Temporal(TemporalType.DATE)
-    private Date date_deb;
+    Date date_deb;
     @Temporal(TemporalType.DATE)
-    private Date date_fin;
+    Date date_fin;
 
     @OneToMany(mappedBy = "activite")
-    private Set<Reservation> reservations = new HashSet<>();
+    Set<Reservation> reservations = new HashSet<>();
 
     @OneToMany(mappedBy = "activite")
-    private Set<Post> posts = new HashSet<>();
+    Set<Post> posts = new HashSet<>();
 
     @ManyToOne
-    private LieuDeCamping lieuActivite;
+    LieuDeCamping lieuActivite;
 
     @ManyToMany(mappedBy = "activites")
-    private Set<Utilisateur> utilisateurs = new HashSet<>();
+    Set<Utilisateur> utilisateurs = new HashSet<>();
 
 }

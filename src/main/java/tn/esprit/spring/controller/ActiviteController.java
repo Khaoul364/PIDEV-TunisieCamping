@@ -1,6 +1,7 @@
 package tn.esprit.spring.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.service.IActiviteService;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 public class ActiviteController {
+    @Autowired
     IActiviteService activiteService;
 
     @GetMapping("/all-activite")
