@@ -1,9 +1,9 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -19,10 +19,10 @@ import java.util.Set;
 public class Equipement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEquipement;
+    private long idEquipement;
     private String equipementName;
-    private String descriotion;
-    private float equipementPrie;
+    private String description;
+    private float equipementPrice;
     private boolean availabilty;
     private int quantityInStock;
     private String marque;
@@ -41,8 +41,10 @@ public class Equipement implements Serializable {
 
     @ManyToMany(mappedBy = "equipements")
     private Set<Panier> paniers = new HashSet<>();
-    @OneToMany(mappedBy = "equipement")
-    private Set<Facture> Facture = new HashSet<>();
+
+    @OneToMany(mappedBy = "equipement", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<PanierEquipement> panierEquipements;
 
 
 

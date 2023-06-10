@@ -16,7 +16,7 @@ import java.util.Set;
 public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private long idUser;
     private String nom;
     private String prenom;
     private String email;
@@ -42,4 +42,7 @@ public class Utilisateur implements Serializable {
 
     @OneToMany(mappedBy = "utilisateur")
     private Set<Reservation> reservations = new HashSet<>();
+
+    @OneToOne(mappedBy = "utilisateur", cascade = CascadeType.ALL)
+    private Panier panier;
 }

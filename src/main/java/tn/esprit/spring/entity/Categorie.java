@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,10 +18,11 @@ import java.util.Set;
 public class Categorie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCategorie;
+    private long idCategorie;
     private String categorieName;
     private String categorieDescription;
 
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(cascade = CascadeType. ALL ,mappedBy = "categorie")
+    @JsonIgnore
     private Set<Equipement> equipements = new HashSet<>();
 }
