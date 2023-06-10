@@ -8,8 +8,6 @@ import tn.esprit.spring.entity.ForumComment;
 
 import java.util.List;
 
-// Not tested with Postman
-//TBD!!
 
 @RestController
 @AllArgsConstructor
@@ -23,8 +21,6 @@ public class ForumCmntController {
     ForumComment addNewComment(@RequestBody ForumComment forumComment) {
        return forumCmntService.addNewComment(forumComment);
    }
-
-
 
    	@PutMapping("/editComment")
 	@ResponseBody
