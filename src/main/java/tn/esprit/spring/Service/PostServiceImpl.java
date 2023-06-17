@@ -3,6 +3,8 @@ package tn.esprit.spring.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tn.esprit.spring.entity.Activite;
+import tn.esprit.spring.entity.ForumComment;
 import tn.esprit.spring.entity.Post;
 import tn.esprit.spring.repository.PostRepository;
 
@@ -21,16 +23,17 @@ public class PostServiceImpl implements IPostService{
         return postRepository.save(post);
     }
     @Override
-    public Post updatePost(Post post, int idPost) {
-        Post post1 = postRepository.findById(idPost).orElse(null);
-        post1.setActivite(post.getActivite());
+    public Post updatePost(Post post) {
+        Post post1 = postRepository.findById(post.getIdPost()).orElse(null);
         post1.setTitle(post.getTitle());
         post1.setDescription(post.getDescription());
         post1.setDate(post.getDate());
-        post1.setUsers(post.getUsers());
         post1.setComments(post.getComments());
-        return postRepository.save(post1);
+        post1.setUsers(post.getUsers());
+        post1.setActivite(post.getActivite());
+        return postRepository.save(post);
     }
+
 
 /*    @Override
     public List<Post> listPostParActivite(int idActivite) {

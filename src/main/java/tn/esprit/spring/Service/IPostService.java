@@ -13,7 +13,7 @@ public interface IPostService {
 //    List<Post> listPostParActivite(int idActivite);
 
 
-    public Post updatePost(Post post, int idPost);
+    public Post updatePost(Post post);
 
     public void deletePost (int idPost);
 

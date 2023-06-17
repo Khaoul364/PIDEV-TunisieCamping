@@ -22,7 +22,7 @@ public class ForumCmntServiceImpl implements IForumCmntService{
     }
 
 /*    @Override
-    public void affectCommentToPost(int idComment, int idPost) {
+    public void assignCommentToPost(int idComment, int idPost) {
 
     }*/
 
