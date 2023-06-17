@@ -10,13 +10,14 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReservationController {
 
     @Autowired
     IReservationService reservationService;
 
     @GetMapping("/all-reservation")
-    @ResponseBody
+    //@ResponseBody
     public List<Reservation> getAllReservation() {
 
         return reservationService.getAllReseravations();
@@ -39,7 +40,7 @@ public class ReservationController {
     }
 
     @PostMapping("/addReservationActivity/{idActivite}")
-    @ResponseBody
+    //@ResponseBody
     public void assignActiviteToReservation(@RequestBody Reservation reservation,@PathVariable int idActivite) {
         reservationService.assignActiviteToReservation(reservation,idActivite);
     }

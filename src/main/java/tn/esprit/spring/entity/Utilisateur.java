@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,8 +33,8 @@ public class Utilisateur implements Serializable {
     @ManyToOne()
     private Post post;
 
-    @ManyToMany
-    private Set<Activite> activites = new HashSet<>();
+    //@ManyToMany
+    //private Set<Activite> activites = new HashSet<>();
 
     @OneToMany(mappedBy = "utilisateur")
     private Set<Feedback> feedbacks = new HashSet<>();
@@ -41,5 +42,6 @@ public class Utilisateur implements Serializable {
     private Set<Facture> Facture = new HashSet<>();
 
     @OneToMany(mappedBy = "utilisateur")
+    @JsonIgnore
     private Set<Reservation> reservations = new HashSet<>();
 }

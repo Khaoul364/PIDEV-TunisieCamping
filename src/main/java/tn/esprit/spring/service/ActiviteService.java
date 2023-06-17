@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Activite;
+import tn.esprit.spring.entity.LieuDeCamping;
 import tn.esprit.spring.repository.ActiviteRepository;
+import tn.esprit.spring.repository.LieuCampingRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,8 @@ import java.util.Optional;
 public class ActiviteService implements IActiviteService{
     @Autowired
     ActiviteRepository activiteRepository;
+    @Autowired
+    LieuCampingRepository lieuCampingRepository;
 
     @Override
     public List<Activite> getAllActivite() {
@@ -28,20 +32,24 @@ public class ActiviteService implements IActiviteService{
     }
 
     @Override
-    public Activite editActivite(Activite activite, int idActivite) {
-        Activite act = activiteRepository.findById(idActivite).orElse(null);
-        act.setLieuActivite(activite.getLieuActivite());
-        act.setNomActivite(activite.getNomActivite());
-        act.setImage(activite.getImage());
-        act.setDescription(activite.getDescription());
-        act.setDate_fin(activite.getDate_fin());
-        act.setDate_deb(activite.getDate_deb());
-        act.setPosts(activite.getPosts());
-        act.setReservations(activite.getReservations());
-        act.setUtilisateurs(activite.getUtilisateurs());
-
-        return activiteRepository.save(act);
+    public void editActivite(Activite activite) {
+        activiteRepository.save(activite);
     }
+
+    // @Override
+    //public Activite editActivite(Activite activite, int idActivite) {
+       // Activite act = activiteRepository.findById(idActivite).orElse(null);
+       // act.setLieuActivite(activite.getLieuActivite());
+       // act.setNomActivite(activite.getNomActivite());
+        //act.setImage(activite.getImage());
+        //act.setDescription(activite.getDescription());
+       // act.setDate_fin(activite.getDate_fin());
+       // act.setDate_deb(activite.getDate_deb());
+        //act.setPosts(activite.getPosts());
+        //act.setReservations(activite.getReservations());
+
+        //return activiteRepository.save(act);
+    //}
 
     @Override
     public void deleteActivite(int idActivite) {
@@ -51,5 +59,12 @@ public class ActiviteService implements IActiviteService{
     @Override
     public Optional<Activite> getActiviteById(int idActivite) {
         return activiteRepository.findById(idActivite);
+    }
+
+    @Override
+    public void assignLieuToActivite(Activite activite, int idLieu) {
+        LieuDeCamping lieu = lieuCampingRepository.findById(idLieu).orElse(null);
+        activite.setLieuActivite(lieu);
+        activiteRepository.save(activite);
     }
 }

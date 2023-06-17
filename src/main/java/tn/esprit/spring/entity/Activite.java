@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,15 +28,17 @@ public class Activite implements Serializable {
     Date date_fin;
 
     @OneToMany(mappedBy = "activite")
+    @JsonIgnore
     Set<Reservation> reservations = new HashSet<>();
 
     @OneToMany(mappedBy = "activite")
+    @JsonIgnore
     Set<Post> posts = new HashSet<>();
 
     @ManyToOne
     LieuDeCamping lieuActivite;
 
-    @ManyToMany(mappedBy = "activites")
-    Set<Utilisateur> utilisateurs = new HashSet<>();
+    //@ManyToMany(mappedBy = "activites")
+    //Set<Utilisateur> utilisateurs = new HashSet<>();
 
 }

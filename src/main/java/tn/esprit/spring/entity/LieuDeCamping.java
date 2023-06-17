@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class LieuDeCamping implements Serializable {
     private int capaciteLieu;
 
     @OneToMany(mappedBy = "lieuActivite")
+    @JsonIgnore
     private Set<Activite> activites;
 
 
