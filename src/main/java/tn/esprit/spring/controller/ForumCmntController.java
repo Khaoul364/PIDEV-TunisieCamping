@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ForumCmntController {
     @Autowired
     IForumCmntService forumCmntService;
