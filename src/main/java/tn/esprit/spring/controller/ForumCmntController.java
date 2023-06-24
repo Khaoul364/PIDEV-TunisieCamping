@@ -18,28 +18,28 @@ public class ForumCmntController {
 
 
     @PostMapping("/addComment")
-	@ResponseBody
+    @ResponseBody
     ForumComment addNewComment(@RequestBody ForumComment forumComment) {
-       return forumCmntService.addNewComment(forumComment);
-   }
+        return forumCmntService.addNewComment(forumComment);
+    }
 
-   	@PutMapping("/editComment")
-	@ResponseBody
+    @PutMapping("/editComment")
+    @ResponseBody
     ForumComment editComment(@RequestBody ForumComment forumComment) {
-	return forumCmntService.editComment(forumComment);
-	}
+        return forumCmntService.editComment(forumComment);
+    }
 
 
     @DeleteMapping("/deleteComment/{id}")
-	@ResponseBody
-	void deleteComment(@PathVariable("id") int idComment) {
-	forumCmntService.deleteComment(idComment);
-	}
+    @ResponseBody
+    void deleteComment(@PathVariable("id") int idComment) {
+        forumCmntService.deleteComment(idComment);
+    }
 
-	@GetMapping("/all-comments")
-	public List<ForumComment> getForums() {
-		return forumCmntService.retrieveAll();
-	}
+    @GetMapping("/all-comments")
+    public List<ForumComment> getForums() {
+        return forumCmntService.retrieveAll();
+    }
 
 
 }

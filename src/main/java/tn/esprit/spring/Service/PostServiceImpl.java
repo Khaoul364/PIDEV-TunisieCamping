@@ -2,6 +2,7 @@ package tn.esprit.spring.Service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.entity.ForumComment;
@@ -16,6 +17,7 @@ import java.util.List;
 @Slf4j
 public class PostServiceImpl implements IPostService{
 
+    @Autowired
     PostRepository postRepository;
 
     @Override
@@ -30,6 +32,7 @@ public class PostServiceImpl implements IPostService{
         post1.setDate(post.getDate());
         post1.setComments(post.getComments());
         post1.setUsers(post.getUsers());
+        post1.setMediaContent(post.getMediaContent());
         post1.setActivite(post.getActivite());
         return postRepository.save(post);
     }
@@ -49,5 +52,10 @@ public class PostServiceImpl implements IPostService{
     @Override
     public List<Post> retrieveAll() {
         return postRepository.findAll();
+    }
+
+    @Override
+    public Post getPostById(int idPost) {
+        return postRepository.getById(idPost);
     }
 }
