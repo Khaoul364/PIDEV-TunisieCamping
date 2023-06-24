@@ -1,10 +1,8 @@
 package tn.esprit.spring.Service;
 
-import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.entity.Post;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IPostService {
 
@@ -15,7 +13,9 @@ public interface IPostService {
 
     public Post updatePost(Post post);
 
-    public void deletePost (int idPost);
+    public void deletePost(int idPost);
 
     public List<Post> retrieveAll();
+
+    public Post getPostById(int idPost);
 }
