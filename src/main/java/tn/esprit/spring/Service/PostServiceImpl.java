@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @Slf4j
-public class PostServiceImpl implements IPostService{
+public class PostServiceImpl implements IPostService {
 
     @Autowired
     PostRepository postRepository;
@@ -24,6 +24,7 @@ public class PostServiceImpl implements IPostService{
     public Post addNewPost(Post post) {
         return postRepository.save(post);
     }
+
     @Override
     public Post updatePost(Post post) {
         Post post1 = postRepository.findById(post.getIdPost()).orElse(null);
@@ -54,8 +55,4 @@ public class PostServiceImpl implements IPostService{
         return postRepository.findAll();
     }
 
-    @Override
-    public Post getPostById(int idPost) {
-        return postRepository.getById(idPost);
-    }
 }

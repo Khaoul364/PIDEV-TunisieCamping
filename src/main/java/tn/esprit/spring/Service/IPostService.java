@@ -17,5 +17,4 @@ public interface IPostService {
 
     public List<Post> retrieveAll();
 
-    public Post getPostById(int idPost);
 }

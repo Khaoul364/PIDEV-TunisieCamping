@@ -22,7 +22,9 @@ public class Post implements Serializable {
     private String description;
     @Temporal(TemporalType.DATE)
     private Date date;
-    private String mediaContent;
+    @Lob
+    private byte[] mediaContent;
+
 
 
     @ManyToOne()
@@ -34,7 +36,6 @@ public class Post implements Serializable {
     @OneToMany(mappedBy = "post")
     private Set<Utilisateur> users = new HashSet<>();
 
-    public void setImagePath(String imagePath) {
-        this.mediaContent = imagePath;
-    }
+
+
 }
