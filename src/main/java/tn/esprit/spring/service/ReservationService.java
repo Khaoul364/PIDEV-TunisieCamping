@@ -39,21 +39,26 @@ public class ReservationService implements IReservationService{
     }
 
     @Override
-    public Reservation editReservation(Reservation reservation, int idReservation) {
-
-        Reservation res = reservationRepository.findById(idReservation).orElse(null);
-        res.setNom(reservation.getNom());
-        res.setActivite(reservation.getActivite());
-        res.setDate_deb(reservation.getDate_deb());
-        res.setDate_fin(reservation.getDate_fin());
-        res.setTelephone(reservation.getTelephone());
-        res.setTransport(reservation.getTransport());
-        res.setPrixTotal(reservation.getPrixTotal());
-        res.setNbrPersonne(reservation.getNbrPersonne());
-        res.setUtilisateur(reservation.getUtilisateur());
-
-        return reservationRepository.save(res);
+    public void editReservation(Reservation reservation) {
+        reservationRepository.save(reservation);
     }
+
+    //@Override
+    //public Reservation editReservation(Reservation reservation, int idReservation) {
+
+        //Reservation res = reservationRepository.findById(idReservation).orElse(null);
+        //res.setNom(reservation.getNom());
+        //res.setActivite(reservation.getActivite());
+        //res.setDate_deb(reservation.getDate_deb());
+        //res.setDate_fin(reservation.getDate_fin());
+        //res.setTelephone(reservation.getTelephone());
+        //res.setTransport(reservation.getTransport());
+        //res.setPrixTotal(reservation.getPrixTotal());
+        //res.setNbrPersonne(reservation.getNbrPersonne());
+        //res.setUtilisateur(reservation.getUtilisateur());
+
+        //return reservationRepository.save(res);
+    //}
 
     @Override
     public void deleteReservation(int idReservation) {

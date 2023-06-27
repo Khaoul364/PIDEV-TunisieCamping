@@ -25,6 +25,7 @@ public class Reservation implements Serializable {
     Double prixTotal;
     String nom;
     int telephone;
+    String email;
 
     @Enumerated(EnumType.STRING)
     Transport transport;

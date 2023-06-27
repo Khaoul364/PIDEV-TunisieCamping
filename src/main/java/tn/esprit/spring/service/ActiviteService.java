@@ -57,8 +57,8 @@ public class ActiviteService implements IActiviteService{
     }
 
     @Override
-    public Optional<Activite> getActiviteById(int idActivite) {
-        return activiteRepository.findById(idActivite);
+    public Activite getActiviteById(int idActivite) {
+        return activiteRepository.getById(idActivite);
     }
 
     @Override

@@ -18,7 +18,7 @@ public interface IActiviteService {
 
     public void deleteActivite(int idActivite);
 
-    public Optional<Activite> getActiviteById(int idActivite);
+    public Activite getActiviteById(int idActivite);
 
     public void assignLieuToActivite(Activite activite, int idLieu);
 

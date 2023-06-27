@@ -21,7 +21,8 @@ public class Activite implements Serializable {
     int idActivite;
     String nomActivite;
     String description;
-    String image;
+    @Lob
+    private byte[] image;
     @Temporal(TemporalType.DATE)
     Date date_deb;
     @Temporal(TemporalType.DATE)
@@ -40,5 +41,4 @@ public class Activite implements Serializable {
 
     //@ManyToMany(mappedBy = "activites")
     //Set<Utilisateur> utilisateurs = new HashSet<>();
-
 }

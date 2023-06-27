@@ -14,7 +14,9 @@ public interface IReservationService {
 
     public void assignActiviteToReservation(Reservation reservation, int idActivite);
 
-    public Reservation editReservation(Reservation reservation, int idReservation);
+    //public Reservation editReservation(Reservation reservation, int idReservation);
+
+    public void editReservation(Reservation reservation);
 
     public void deleteReservation(int idReservation);
 
