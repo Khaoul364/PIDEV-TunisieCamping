@@ -4,6 +4,7 @@ import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.entity.Reservation;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface IActiviteService {
@@ -21,5 +22,7 @@ public interface IActiviteService {
     public Activite getActiviteById(int idActivite);
 
     public void assignLieuToActivite(Activite activite, int idLieu);
+
+    public Map<Integer, Integer> getReservationsCountPerActivity();
 
 }

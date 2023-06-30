@@ -61,8 +61,18 @@ public class ReservationController {
 
     @PostMapping("/addReservationActivity/{idActivite}")
     //@ResponseBody
-    public void assignActiviteToReservation(@RequestBody Reservation reservation,@PathVariable int idActivite) {
-        reservationService.assignActiviteToReservation(reservation,idActivite);
+    public Reservation assignActiviteToReservation(@RequestBody Reservation reservation,@PathVariable int idActivite) {
+        //reservationService.assignActiviteToReservation(reservation,idActivite);
+        Reservation addedReservation = reservationService.assignActiviteToReservation(reservation,idActivite);
+
+        String login = addedReservation.getEmail();
+        // Send email notification
+        String to = login; // Use the login variable as the recipient's email address
+        String subject = "Confirmation de réservation Tunisie Camping ";
+        String content = "Votre réservation a été bien sauvegardée." ;
+        emailService.sendEmail(to, subject, content);
+
+        return addedReservation;
     }
 
 

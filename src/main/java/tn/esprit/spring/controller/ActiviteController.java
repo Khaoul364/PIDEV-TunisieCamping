@@ -10,6 +10,7 @@ import tn.esprit.spring.service.IActiviteService;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -64,6 +65,11 @@ public class ActiviteController {
     //@ResponseBody
     public void assignLieuToActivite(@RequestBody Activite activite, @PathVariable int idLieu) {
         activiteService.assignLieuToActivite(activite, idLieu);
+    }
+
+    @GetMapping("/reservationCount")
+    public Map<Integer, Integer> getReservationsCountPerActivity() {
+        return activiteService.getReservationsCountPerActivity();
     }
 
 }

@@ -32,10 +32,10 @@ public class ReservationService implements IReservationService{
     }
 
     @Override
-    public void assignActiviteToReservation(Reservation reservation, int idActivite) {
+    public Reservation assignActiviteToReservation(Reservation reservation, int idActivite) {
         Activite act = activiteRepository.findById(idActivite).orElse(null);
         reservation.setActivite(act);
-        reservationRepository.save(reservation);
+        return reservationRepository.save(reservation);
     }
 
     @Override

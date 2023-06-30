@@ -9,7 +9,9 @@ import tn.esprit.spring.entity.LieuDeCamping;
 import tn.esprit.spring.repository.ActiviteRepository;
 import tn.esprit.spring.repository.LieuCampingRepository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -66,5 +68,19 @@ public class ActiviteService implements IActiviteService{
         LieuDeCamping lieu = lieuCampingRepository.findById(idLieu).orElse(null);
         activite.setLieuActivite(lieu);
         activiteRepository.save(activite);
+    }
+
+    @Override
+    public Map<Integer, Integer> getReservationsCountPerActivity() {
+        List<Activite> activities = activiteRepository.findAll();
+
+        Map<Integer, Integer> reservationsCountMap = new HashMap<>();
+
+        for (Activite activite : activities) {
+            int reservationsCount = activite.getReservations().size();
+            reservationsCountMap.put(activite.getIdActivite(), reservationsCount);
+        }
+
+        return reservationsCountMap;
     }
 }

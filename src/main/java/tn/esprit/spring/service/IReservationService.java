@@ -12,7 +12,7 @@ public interface IReservationService {
 
     public Reservation addReservation(Reservation reservation);
 
-    public void assignActiviteToReservation(Reservation reservation, int idActivite);
+    public Reservation assignActiviteToReservation(Reservation reservation, int idActivite);
 
     //public Reservation editReservation(Reservation reservation, int idReservation);
 
