@@ -2,6 +2,7 @@ package tn.esprit.spring.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.Service.IForumCmntService;
 import tn.esprit.spring.entity.ForumComment;
@@ -41,5 +42,16 @@ public class ForumCmntController {
         return forumCmntService.retrieveAll();
     }
 
+    @PostMapping("/assignCommentToPost/{postId}")
+    public ResponseEntity<ForumComment> assignPostToComment(@RequestBody ForumComment comment, @PathVariable("postId") int postId) {
+        ForumComment commentToPost = forumCmntService.assignPostToComment(comment, postId);
+        if (commentToPost == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(commentToPost);
+    }
+
 
 }
+

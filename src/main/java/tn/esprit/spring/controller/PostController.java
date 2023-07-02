@@ -1,19 +1,16 @@
 package tn.esprit.spring.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.geometry.Pos;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import tn.esprit.spring.Service.IForumCmntService;
 import tn.esprit.spring.Service.IPostService;
-import tn.esprit.spring.entity.Activite;
 import tn.esprit.spring.entity.Post;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -24,22 +21,7 @@ public class PostController {
 
     @Autowired
     IPostService postService;
-
-    /*@PostMapping("/add-post")
-    public Post addNewPost(@RequestParam("mediaContent") MultipartFile image,
-                           @RequestParam("post") String postJson) {
-        try {
-            Post post = new ObjectMapper().readValue(postJson,  Post.class);
-            if (!image.isEmpty()) {
-                byte[] imageBytes = image.getBytes();
-                post.setMediaContent(imageBytes);
-            }
-            return postService.addNewPost(post);
-        } catch (IOException e) {
-            // Handle the exception
-            return null;
-        }
-    }*/
+    IForumCmntService commentService;
 
     @PostMapping("/add-post")
     public ResponseEntity<Post> addNewPost(@RequestParam("mediaContent") MultipartFile image,
@@ -81,6 +63,7 @@ public class PostController {
     public List<Post> getPosts() {
         return postService.retrieveAll();
     }
+
 
 }
 

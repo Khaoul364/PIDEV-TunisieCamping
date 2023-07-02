@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,11 +30,12 @@ public class Post implements Serializable {
 
     @ManyToOne()
     private Activite activite;
-
     @OneToMany(mappedBy = "post")
+    @JsonIgnore
     private Set<ForumComment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "post")
+    @JsonIgnore
     private Set<Utilisateur> users = new HashSet<>();
 
 

@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.spring.entity.Activite;
-import tn.esprit.spring.entity.ForumComment;
 import tn.esprit.spring.entity.Post;
 import tn.esprit.spring.repository.PostRepository;
 
@@ -54,5 +52,6 @@ public class PostServiceImpl implements IPostService {
     public List<Post> retrieveAll() {
         return postRepository.findAll();
     }
+
 
 }
