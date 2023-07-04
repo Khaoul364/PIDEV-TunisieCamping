@@ -34,7 +34,8 @@ public class Activite implements Serializable {
 
     @ManyToOne
     private LieuDeCamping lieuActivite;
-
+    @OneToMany(mappedBy = "acitivte")
+    private Set<Feedback> feedbacks = new HashSet<>();
     @ManyToMany(mappedBy = "activites")
     private Set<Utilisateur> utilisateurs = new HashSet<>();
 

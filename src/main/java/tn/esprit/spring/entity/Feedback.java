@@ -22,5 +22,9 @@ public class Feedback implements Serializable {
     private String description;
     private FeedbackType type;
     @ManyToOne
+    @JoinColumn(name = "activite_id")
+    private Activite activite;
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
 }
