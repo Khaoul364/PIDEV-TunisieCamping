@@ -16,21 +16,22 @@ public class Reservation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idReservation;
-    private int nbrPersonne;
+    int idReservation;
+    int nbrPersonne;
     @Temporal(TemporalType.DATE)
-    private Date date_deb;
+    Date date_deb;
     @Temporal(TemporalType.DATE)
-    private Date date_fin;
-    private Double prixTotal;
-    private String nom;
-    private int telephone;
+    Date date_fin;
+    Double prixTotal;
+    String nom;
+    int telephone;
+    String email;
 
     @Enumerated(EnumType.STRING)
-    private Transport transport;
+    Transport transport;
 
     @ManyToOne
-    private Activite activite;
+    Activite activite;
     @ManyToOne
-    private Utilisateur utilisateur;
+    Utilisateur utilisateur;
 }
