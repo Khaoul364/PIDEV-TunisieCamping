@@ -19,12 +19,10 @@ public class ForumComment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idComment;
     private String content;
-    private String mediaComment;
     @Temporal(TemporalType.DATE)
     private Date datePosted;
-
-   @ManyToOne()
-   private Post post;
+    @ManyToOne()
+    private Post post;
 
     @ManyToMany()
     private Set<Utilisateur> users = new HashSet<>();
