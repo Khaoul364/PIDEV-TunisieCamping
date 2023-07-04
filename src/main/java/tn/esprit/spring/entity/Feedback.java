@@ -20,7 +20,7 @@ public class Feedback implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date created_date;
     private String description;
-
+    private FeedbackType type;
     @ManyToOne
     private Utilisateur utilisateur;
 }
