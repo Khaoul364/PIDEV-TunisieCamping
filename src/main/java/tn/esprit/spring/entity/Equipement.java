@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +31,7 @@ public class Equipement implements Serializable {
     private String equipementImage;
     private boolean featured;
     private int purchaseQuantity;
-    @Temporal(TemporalType.DATE)
-    private Date dateModification;
+    private LocalDateTime dateModification;
     @Enumerated(EnumType.STRING)
     private Color color;
 

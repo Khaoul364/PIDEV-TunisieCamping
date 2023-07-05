@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequestMapping("categories")
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = " http://localhost:4200")
 public class CategorieController {
     @Autowired
     private CategorieService CS;

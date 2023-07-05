@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
@@ -23,8 +23,7 @@ public class Facture implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idFacture;
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
     private int totalNumberEquipPurchased;
     private float deleviryPrice;
     private float totale;
