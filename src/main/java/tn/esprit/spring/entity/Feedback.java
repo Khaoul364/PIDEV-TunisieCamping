@@ -22,5 +22,5 @@ public class Feedback implements Serializable {
     private String description;
 
     @ManyToOne
-    private Utilisateur utilisateur;
+    private User user;
 }

@@ -30,6 +30,6 @@ public class Post implements Serializable {
     private Set<ForumComment> comments = new HashSet<>();
 
     @OneToMany(mappedBy = "post")
-    private Set<Utilisateur> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
 }

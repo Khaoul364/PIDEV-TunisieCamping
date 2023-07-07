@@ -32,5 +32,5 @@ public class Reservation implements Serializable {
     @ManyToOne
     private Activite activite;
     @ManyToOne
-    private Utilisateur utilisateur;
+    private User user;
 }

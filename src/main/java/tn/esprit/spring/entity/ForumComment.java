@@ -27,6 +27,6 @@ public class ForumComment implements Serializable {
    private Post post;
 
     @ManyToMany()
-    private Set<Utilisateur> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
 }

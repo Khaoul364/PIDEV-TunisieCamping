@@ -22,7 +22,7 @@ public class Facture implements Serializable {
     private String adresse;
 
     @ManyToOne()
-    private Utilisateur utilisateur;
+    private User user;
     @ManyToOne()
     private Equipement equipement;
 }
