@@ -6,6 +6,7 @@ import tn.esprit.spring.entity.Feedback;
 import tn.esprit.spring.repository.FeedbackRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +17,15 @@ public class FeedBackServiceImpl implements FeedBackService {
     @Override
     public List<Feedback> getAllFeedbacks() {
         return feedbackRepository.findAll();
+    }
+
+    @Override
+    public List<Feedback> getAllFeedbacksByActivityId(int activityId) {
+        return feedbackRepository
+                .findAll()
+                .stream()
+                .filter(f -> f.getActivite().getIdActivite() == activityId)
+                .collect(Collectors.toList());
     }
 
     @Override

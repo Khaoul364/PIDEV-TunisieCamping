@@ -20,6 +20,11 @@ public class FeedbackController {
         return feedBackService.getAllFeedbacks();
     }
 
+    @GetMapping("/{activiteId}")
+    public List<Feedback> getAllFeedbacksByActiviteId(@PathVariable int activiteId) {
+        return feedBackService.getAllFeedbacksByActivityId(activiteId);
+    }
+
     @PostMapping
     public Feedback saveFeedback(@RequestBody Feedback feedback) {
         return feedBackService.ajouterFeedBack(feedback);
