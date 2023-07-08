@@ -56,6 +56,9 @@ public class ForumCmntServiceImpl implements IForumCmntService {
         }
         return null;
     }
-
+    @Override
+    public List<ForumComment> getPostComments(int postId) {
+        return forumCmntRepository.findByPostPostId(postId);
+    }
 
 }

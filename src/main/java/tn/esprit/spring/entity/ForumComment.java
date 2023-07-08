@@ -27,4 +27,8 @@ public class ForumComment implements Serializable {
     @ManyToMany()
     private Set<Utilisateur> users = new HashSet<>();
 
+    public ForumComment(int commentId, String content) {
+        this.idComment = commentId;
+        this.content = content;
+    }
 }

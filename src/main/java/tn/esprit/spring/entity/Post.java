@@ -16,9 +16,15 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 public class Post implements Serializable {
+
+    public Post(int postId, String title, String description) {
+        this.postId = postId;
+        this.title = title;
+        this.description = description;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPost;
+    private int postId;
     private String title;
     private String description;
     @Temporal(TemporalType.DATE)

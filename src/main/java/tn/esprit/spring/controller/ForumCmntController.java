@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.spring.Service.EmailService;
+import tn.esprit.spring.Service.ForumEmailService;
 import tn.esprit.spring.Service.IForumCmntService;
+import tn.esprit.spring.Service.IPostService;
 import tn.esprit.spring.entity.ForumComment;
+import tn.esprit.spring.entity.Post;
 
 import java.util.List;
 
@@ -16,22 +20,43 @@ import java.util.List;
 public class ForumCmntController {
     @Autowired
     IForumCmntService forumCmntService;
+    @Autowired
+    IPostService postService;
+    @Autowired
+    ForumEmailService emailService;
 
-
-    @PostMapping("/addComment")
+    @PostMapping("/add-comment")
     @ResponseBody
     ForumComment addNewComment(@RequestBody ForumComment forumComment) {
         return forumCmntService.addNewComment(forumComment);
     }
 
-    @PutMapping("/editComment")
+    /*@PostMapping("/add-comment/{postId}")
+    @ResponseBody
+    public ForumComment addNewCommentToPost(@PathVariable("postId") int postId, @RequestBody ForumComment forumComment) {
+        ForumComment newComment = forumCmntService.addNewComment(forumComment);
+
+        // Retrieve the associated post
+        Post post = postService.getPostById(postId);
+
+        // Send email notification
+        String emailTo = "rym.baazaoui@esprit.tn"; // Set the recipient email address
+        String subject = "New Comment Added to Post: " + post.getTitle();
+        String content = "A new comment has been added to the post: " + post.getDescription();
+
+        emailService.sendEmail(emailTo, subject, content);
+
+        return newComment;
+    }*/
+
+    @PutMapping("/edit-comment")
     @ResponseBody
     ForumComment editComment(@RequestBody ForumComment forumComment) {
         return forumCmntService.editComment(forumComment);
     }
 
 
-    @DeleteMapping("/deleteComment/{id}")
+    @DeleteMapping("/delete-comment/{id}")
     @ResponseBody
     void deleteComment(@PathVariable("id") int idComment) {
         forumCmntService.deleteComment(idComment);
@@ -42,12 +67,20 @@ public class ForumCmntController {
         return forumCmntService.retrieveAll();
     }
 
-    @PostMapping("/assignCommentToPost/{postId}")
+    @PostMapping("/assign-comment-to-post/{postId}")
     public ResponseEntity<ForumComment> assignPostToComment(@RequestBody ForumComment comment, @PathVariable("postId") int postId) {
         ForumComment commentToPost = forumCmntService.assignPostToComment(comment, postId);
         if (commentToPost == null) {
             return ResponseEntity.notFound().build();
         }
+
+        // Retrieve the post details based on the postId
+        Post post = postService.getPostById(postId);
+
+        // Send the email with the post title in the subject
+        String emailSubject = "New Comment on Post: " + post.getTitle();
+        String emailContent = "A new comment has been added to the post: " + post.getTitle();
+        emailService.sendCommentEmail("rym.baazaoui@esprit.tn", emailSubject, emailContent);
 
         return ResponseEntity.ok(commentToPost);
     }

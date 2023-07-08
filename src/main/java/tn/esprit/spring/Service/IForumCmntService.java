@@ -17,5 +17,5 @@ public interface IForumCmntService {
 
     public ForumComment assignPostToComment(ForumComment comment, int idPost);
 
-
+    public List<ForumComment> getPostComments(int postId);
 }

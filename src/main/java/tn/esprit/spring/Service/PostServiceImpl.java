@@ -8,6 +8,7 @@ import tn.esprit.spring.entity.Post;
 import tn.esprit.spring.repository.PostRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @Service
@@ -25,7 +26,7 @@ public class PostServiceImpl implements IPostService {
 
     @Override
     public Post updatePost(Post post) {
-        Post post1 = postRepository.findById(post.getIdPost()).orElse(null);
+        Post post1 = postRepository.findById(post.getPostId()).orElse(null);
         post1.setTitle(post.getTitle());
         post1.setDescription(post.getDescription());
         post1.setDate(post.getDate());
@@ -52,6 +53,13 @@ public class PostServiceImpl implements IPostService {
     public List<Post> retrieveAll() {
         return postRepository.findAll();
     }
+
+    @Override
+    public Post getPostById(int postId) {
+        return postRepository.findById(postId)
+                .orElseThrow(() -> new NoSuchElementException("Post not found"));
+    }
+
 
 
 }
