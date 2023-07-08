@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.spring.Service.EmailService;
-import tn.esprit.spring.Service.ForumEmailService;
 import tn.esprit.spring.Service.IForumCmntService;
 import tn.esprit.spring.Service.IPostService;
 import tn.esprit.spring.entity.ForumComment;
-import tn.esprit.spring.entity.Post;
 
 import java.util.List;
 
@@ -22,8 +19,8 @@ public class ForumCmntController {
     IForumCmntService forumCmntService;
     @Autowired
     IPostService postService;
-    @Autowired
-    ForumEmailService emailService;
+/*    @Autowired
+    ForumEmailService emailService;*/
 
     @PostMapping("/add-comment")
     @ResponseBody
