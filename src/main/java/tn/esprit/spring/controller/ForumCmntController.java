@@ -75,16 +75,15 @@ public class ForumCmntController {
         }
 
         // Retrieve the post details based on the postId
-        Post post = postService.getPostById(postId);
+        /*Post post = postService.getPostById(postId);
 
         // Send the email with the post title in the subject
         String emailSubject = "New Comment on Post: " + post.getTitle();
         String emailContent = "A new comment has been added to the post: " + post.getTitle();
-        emailService.sendCommentEmail("rym.baazaoui@esprit.tn", emailSubject, emailContent);
+        emailService.sendCommentEmail("rym.baazaoui@esprit.tn", emailSubject, emailContent);*/
 
         return ResponseEntity.ok(commentToPost);
     }
-
 
 }
 
