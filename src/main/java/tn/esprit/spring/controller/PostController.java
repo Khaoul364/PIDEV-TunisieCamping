@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.spring.Service.IForumCmntService;
 import tn.esprit.spring.Service.IPostService;
+import tn.esprit.spring.entity.ForumComment;
 import tn.esprit.spring.entity.Post;
 
 import java.io.IOException;
@@ -24,13 +25,13 @@ public class PostController {
     IForumCmntService commentService;
 
     @PostMapping("/add-post")
-    public ResponseEntity<Post> addNewPost(@RequestParam("mediaContent") MultipartFile image,
-                                           @RequestParam("post") String postJson) {
+    public ResponseEntity<Post> addNewPost(@RequestPart("mediaContent") MultipartFile mediaContent,
+                                           @RequestPart("post") String postJson) {
         try {
             Post post = new ObjectMapper().readValue(postJson, Post.class);
-            if (!image.isEmpty()) {
-                byte[] imageBytes = image.getBytes();
-                post.setMediaContent(imageBytes);
+            if (!mediaContent.isEmpty()) {
+                byte[] mediaContentBytes = mediaContent.getBytes();
+                post.setMediaContent(mediaContentBytes);
             }
             Post newPost = postService.addNewPost(post);
             return ResponseEntity.ok(newPost);
@@ -40,11 +41,6 @@ public class PostController {
     }
 
 
-   /* @PostMapping("/addPost")
-    @ResponseBody
-    Post addNewPost(@RequestBody Post post) {
-        return postService.addNewPost(post);
-    }*/
 
     @PutMapping("/edit-post")
     @ResponseBody
@@ -62,6 +58,23 @@ public class PostController {
     @GetMapping("/all-posts")
     public List<Post> getPosts() {
         return postService.retrieveAll();
+    }
+
+ /*   @GetMapping("/posts/{postId}/comments")
+    public ResponseEntity<List<ForumComment>> getPostComments(@PathVariable("postId") int postId) {
+        List<ForumComment> comments = commentService.getPostComments(postId);
+        return ResponseEntity.ok(comments);
+    }*/
+    @GetMapping("/comments/post/{postId}")
+    public ResponseEntity<List<ForumComment>> getCommentsByPostId(@PathVariable("postId") int postId) {
+        List<ForumComment> comments = commentService.getPostComments(postId);
+        return ResponseEntity.ok(comments);
+    }
+
+    @GetMapping("/posts/{postId}")
+    public ResponseEntity<Post> getPostById(@PathVariable("postId") int postId) {
+        Post post = postService.getPostById(postId);
+        return ResponseEntity.ok(post);
     }
 
 

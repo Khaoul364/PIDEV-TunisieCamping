@@ -1,8 +1,10 @@
 package tn.esprit.spring.Service;
 
+import org.w3c.dom.html.HTMLInputElement;
 import tn.esprit.spring.entity.Post;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public interface IPostService {
 
@@ -16,5 +18,8 @@ public interface IPostService {
     public void deletePost(int idPost);
 
     public List<Post> retrieveAll();
+
+    public Post getPostById(int postId);
+
 
 }
